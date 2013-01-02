@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.metawatch.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>com.metawatch.common.mwmapp</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -20,10 +20,25 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.metawatch.mwmapp</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>mwmapp.com.metawatch.common.mwmapp</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>bluetooth-central</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -31,8 +46,14 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>metawatch_8pt_5pxl_CAPS.ttf</string>
+		<string>metawatch_8pt_5pxl_Numerals.ttf</string>
+		<string>metawatch_8pt_6pxl_Numerals.ttf</string>
+		<string>metawatch_8pt_7pxl_CAPS.ttf</string>
+		<string>metawatch_16pt_11pxl.ttf</string>
 	</array>
 </dict>
 </plist>

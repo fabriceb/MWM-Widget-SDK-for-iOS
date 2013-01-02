@@ -8,12 +8,23 @@
 
 #import "AppDelegate.h"
 
+#import "MainViewController.h"
+#import "MWMAppManager.h"
+
 @implementation AppDelegate
+
+- (BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    [[MWMAppManager sharedAppManager] handleURL:url fromAPP:sourceApplication withAnnotation:annotation];
+    return YES;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    MainViewController *VC = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+    self.window.rootViewController = VC;
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

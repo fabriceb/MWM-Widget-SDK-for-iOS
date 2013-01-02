@@ -7,6 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270D713D166D0CF800D87B2F /* bg_a.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 270D713C166D0CF800D87B2F /* bg_a.bmp */; };
+		274564DC167A05FE00424A9D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2782DAB01625A7B700C3C67A /* main.m */; };
+		274564DD167A05FE00424A9D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2782DAB41625A7B700C3C67A /* AppDelegate.m */; };
+		274564DF167A05FE00424A9D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ADACB016396E7900D25279 /* MainViewController.m */; };
+		274564E2167A05FE00424A9D /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EC94351639AF190050E36A /* CoreBluetooth.framework */; };
+		274564E3167A05FE00424A9D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2782DAA41625A7B700C3C67A /* UIKit.framework */; };
+		274564E4167A05FE00424A9D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2782DAA61625A7B700C3C67A /* Foundation.framework */; };
+		274564E5167A05FE00424A9D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2782DAA81625A7B700C3C67A /* CoreGraphics.framework */; };
+		274564E7167A05FE00424A9D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2782DAAD1625A7B700C3C67A /* InfoPlist.strings */; };
+		274564E8167A05FE00424A9D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2782DAB61625A7B700C3C67A /* Default.png */; };
+		274564E9167A05FE00424A9D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2782DAB81625A7B700C3C67A /* Default@2x.png */; };
+		274564EA167A05FE00424A9D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2782DABA1625A7B700C3C67A /* Default-568h@2x.png */; };
+		274564EB167A05FE00424A9D /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27ADACB116396E7900D25279 /* MainViewController.xib */; };
+		274564EC167A05FE00424A9D /* mwmapp1.png in Resources */ = {isa = PBXBuildFile; fileRef = 279BDD65165A56A000DFBFEB /* mwmapp1.png */; };
+		274564ED167A05FE00424A9D /* bg_a.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 270D713C166D0CF800D87B2F /* bg_a.bmp */; };
+		274564F6167A13DA00424A9D /* reisgration.mww in Resources */ = {isa = PBXBuildFile; fileRef = 274564F5167A13DA00424A9D /* reisgration.mww */; };
+		274564F7167A13DA00424A9D /* reisgration.mww in Resources */ = {isa = PBXBuildFile; fileRef = 274564F5167A13DA00424A9D /* reisgration.mww */; };
 		2782DAA51625A7B700C3C67A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2782DAA41625A7B700C3C67A /* UIKit.framework */; };
 		2782DAA71625A7B700C3C67A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2782DAA61625A7B700C3C67A /* Foundation.framework */; };
 		2782DAA91625A7B700C3C67A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2782DAA81625A7B700C3C67A /* CoreGraphics.framework */; };
@@ -16,14 +33,35 @@
 		2782DAB71625A7B700C3C67A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2782DAB61625A7B700C3C67A /* Default.png */; };
 		2782DAB91625A7B700C3C67A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2782DAB81625A7B700C3C67A /* Default@2x.png */; };
 		2782DABB1625A7B700C3C67A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2782DABA1625A7B700C3C67A /* Default-568h@2x.png */; };
+		278F9FDF168250DD0070696A /* mwmapp2.png in Resources */ = {isa = PBXBuildFile; fileRef = 278F9FDE168250DD0070696A /* mwmapp2.png */; };
+		279BDD66165A56A000DFBFEB /* mwmapp1.png in Resources */ = {isa = PBXBuildFile; fileRef = 279BDD65165A56A000DFBFEB /* mwmapp1.png */; };
+		27ADACB216396E7900D25279 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ADACB016396E7900D25279 /* MainViewController.m */; };
+		27ADACB316396E7900D25279 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27ADACB116396E7900D25279 /* MainViewController.xib */; };
+		27B822501685E2B8001F7635 /* libMWMAppManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B8224F1685E2B7001F7635 /* libMWMAppManager.a */; };
+		27B822511685E2B8001F7635 /* libMWMAppManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B8224F1685E2B7001F7635 /* libMWMAppManager.a */; };
+		27C74DB916822CBD00D1E085 /* metawatch_8pt_5pxl_CAPS.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27C74DB416822CBC00D1E085 /* metawatch_8pt_5pxl_CAPS.ttf */; };
+		27C74DBA16822CBD00D1E085 /* metawatch_8pt_5pxl_CAPS.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27C74DB416822CBC00D1E085 /* metawatch_8pt_5pxl_CAPS.ttf */; };
+		27C74DBB16822CBD00D1E085 /* metawatch_8pt_5pxl_Numerals.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27C74DB516822CBC00D1E085 /* metawatch_8pt_5pxl_Numerals.ttf */; };
+		27C74DBC16822CBD00D1E085 /* metawatch_8pt_5pxl_Numerals.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27C74DB516822CBC00D1E085 /* metawatch_8pt_5pxl_Numerals.ttf */; };
+		27C74DBD16822CBD00D1E085 /* metawatch_8pt_6pxl_Numerals.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27C74DB616822CBC00D1E085 /* metawatch_8pt_6pxl_Numerals.ttf */; };
+		27C74DBE16822CBD00D1E085 /* metawatch_8pt_6pxl_Numerals.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27C74DB616822CBC00D1E085 /* metawatch_8pt_6pxl_Numerals.ttf */; };
+		27C74DBF16822CBD00D1E085 /* metawatch_8pt_7pxl_CAPS.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27C74DB716822CBC00D1E085 /* metawatch_8pt_7pxl_CAPS.ttf */; };
+		27C74DC016822CBD00D1E085 /* metawatch_8pt_7pxl_CAPS.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27C74DB716822CBC00D1E085 /* metawatch_8pt_7pxl_CAPS.ttf */; };
+		27C74DC116822CBD00D1E085 /* metawatch_16pt_11pxl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27C74DB816822CBD00D1E085 /* metawatch_16pt_11pxl.ttf */; };
+		27C74DC216822CBD00D1E085 /* metawatch_16pt_11pxl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27C74DB816822CBD00D1E085 /* metawatch_16pt_11pxl.ttf */; };
+		27EC94361639AF190050E36A /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EC94351639AF190050E36A /* CoreBluetooth.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2782DAA01625A7B700C3C67A /* MWMApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MWMApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		270D713C166D0CF800D87B2F /* bg_a.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = bg_a.bmp; sourceTree = "<group>"; };
+		274564F1167A05FE00424A9D /* MWMApp2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MWMApp2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		274564F3167A05FE00424A9D /* MWMApp2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MWMApp2-Info.plist"; sourceTree = SOURCE_ROOT; };
+		274564F5167A13DA00424A9D /* reisgration.mww */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = reisgration.mww; sourceTree = "<group>"; };
+		2782DAA01625A7B700C3C67A /* MWMApp1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MWMApp1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2782DAA41625A7B700C3C67A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2782DAA61625A7B700C3C67A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2782DAA81625A7B700C3C67A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		2782DAAC1625A7B700C3C67A /* MWMApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MWMApp-Info.plist"; sourceTree = "<group>"; };
+		2782DAAC1625A7B700C3C67A /* MWMApp1-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MWMApp1-Info.plist"; sourceTree = "<group>"; };
 		2782DAAE1625A7B700C3C67A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2782DAB01625A7B700C3C67A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2782DAB21625A7B700C3C67A /* MWMApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MWMApp-Prefix.pch"; sourceTree = "<group>"; };
@@ -32,16 +70,43 @@
 		2782DAB61625A7B700C3C67A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		2782DAB81625A7B700C3C67A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		2782DABA1625A7B700C3C67A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		278F9FDE168250DD0070696A /* mwmapp2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mwmapp2.png; sourceTree = "<group>"; };
+		279BDD65165A56A000DFBFEB /* mwmapp1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mwmapp1.png; sourceTree = "<group>"; };
+		27ADAC9916395D9800D25279 /* MWMAppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWMAppManager.h; sourceTree = "<group>"; };
+		27ADACAF16396E7900D25279 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		27ADACB016396E7900D25279 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		27ADACB116396E7900D25279 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		27B8224F1685E2B7001F7635 /* libMWMAppManager.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMWMAppManager.a; path = "../../../../Library/Developer/Xcode/DerivedData/MWMAppManager-ekgzzrlegxjarrdhhkydmepelhmr/Build/Products/Debug-iphoneos/libMWMAppManager.a"; sourceTree = "<group>"; };
+		27C74DB416822CBC00D1E085 /* metawatch_8pt_5pxl_CAPS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = metawatch_8pt_5pxl_CAPS.ttf; sourceTree = "<group>"; };
+		27C74DB516822CBC00D1E085 /* metawatch_8pt_5pxl_Numerals.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = metawatch_8pt_5pxl_Numerals.ttf; sourceTree = "<group>"; };
+		27C74DB616822CBC00D1E085 /* metawatch_8pt_6pxl_Numerals.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = metawatch_8pt_6pxl_Numerals.ttf; sourceTree = "<group>"; };
+		27C74DB716822CBC00D1E085 /* metawatch_8pt_7pxl_CAPS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = metawatch_8pt_7pxl_CAPS.ttf; sourceTree = "<group>"; };
+		27C74DB816822CBD00D1E085 /* metawatch_16pt_11pxl.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = metawatch_16pt_11pxl.ttf; sourceTree = "<group>"; };
+		27EC94351639AF190050E36A /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		274564E1167A05FE00424A9D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				274564E2167A05FE00424A9D /* CoreBluetooth.framework in Frameworks */,
+				274564E3167A05FE00424A9D /* UIKit.framework in Frameworks */,
+				274564E4167A05FE00424A9D /* Foundation.framework in Frameworks */,
+				274564E5167A05FE00424A9D /* CoreGraphics.framework in Frameworks */,
+				27B822511685E2B8001F7635 /* libMWMAppManager.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2782DA9D1625A7B700C3C67A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27EC94361639AF190050E36A /* CoreBluetooth.framework in Frameworks */,
 				2782DAA51625A7B700C3C67A /* UIKit.framework in Frameworks */,
 				2782DAA71625A7B700C3C67A /* Foundation.framework in Frameworks */,
 				2782DAA91625A7B700C3C67A /* CoreGraphics.framework in Frameworks */,
+				27B822501685E2B8001F7635 /* libMWMAppManager.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,7 +125,8 @@
 		2782DAA11625A7B700C3C67A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2782DAA01625A7B700C3C67A /* MWMApp.app */,
+				2782DAA01625A7B700C3C67A /* MWMApp1.app */,
+				274564F1167A05FE00424A9D /* MWMApp2.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -68,6 +134,7 @@
 		2782DAA31625A7B700C3C67A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				27EC94351639AF190050E36A /* CoreBluetooth.framework */,
 				2782DAA41625A7B700C3C67A /* UIKit.framework */,
 				2782DAA61625A7B700C3C67A /* Foundation.framework */,
 				2782DAA81625A7B700C3C67A /* CoreGraphics.framework */,
@@ -80,7 +147,17 @@
 			children = (
 				2782DAB31625A7B700C3C67A /* AppDelegate.h */,
 				2782DAB41625A7B700C3C67A /* AppDelegate.m */,
+				27ADAC9916395D9800D25279 /* MWMAppManager.h */,
+				27B8224F1685E2B7001F7635 /* libMWMAppManager.a */,
+				27ADACAF16396E7900D25279 /* MainViewController.h */,
+				27ADACB016396E7900D25279 /* MainViewController.m */,
+				27ADACB116396E7900D25279 /* MainViewController.xib */,
+				279BDD65165A56A000DFBFEB /* mwmapp1.png */,
+				278F9FDE168250DD0070696A /* mwmapp2.png */,
+				270D713C166D0CF800D87B2F /* bg_a.bmp */,
+				274564F5167A13DA00424A9D /* reisgration.mww */,
 				2782DAAB1625A7B700C3C67A /* Supporting Files */,
+				27C74DC416822CC000D1E085 /* MetaFonts */,
 			);
 			path = MWMApp;
 			sourceTree = "<group>";
@@ -88,7 +165,8 @@
 		2782DAAB1625A7B700C3C67A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				2782DAAC1625A7B700C3C67A /* MWMApp-Info.plist */,
+				2782DAAC1625A7B700C3C67A /* MWMApp1-Info.plist */,
+				274564F3167A05FE00424A9D /* MWMApp2-Info.plist */,
 				2782DAAD1625A7B700C3C67A /* InfoPlist.strings */,
 				2782DAB01625A7B700C3C67A /* main.m */,
 				2782DAB21625A7B700C3C67A /* MWMApp-Prefix.pch */,
@@ -99,12 +177,41 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		27C74DC416822CC000D1E085 /* MetaFonts */ = {
+			isa = PBXGroup;
+			children = (
+				27C74DB416822CBC00D1E085 /* metawatch_8pt_5pxl_CAPS.ttf */,
+				27C74DB516822CBC00D1E085 /* metawatch_8pt_5pxl_Numerals.ttf */,
+				27C74DB616822CBC00D1E085 /* metawatch_8pt_6pxl_Numerals.ttf */,
+				27C74DB716822CBC00D1E085 /* metawatch_8pt_7pxl_CAPS.ttf */,
+				27C74DB816822CBD00D1E085 /* metawatch_16pt_11pxl.ttf */,
+			);
+			name = MetaFonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2782DA9F1625A7B700C3C67A /* MWMApp */ = {
+		274564DA167A05FE00424A9D /* MWMApp2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2782DABE1625A7B700C3C67A /* Build configuration list for PBXNativeTarget "MWMApp" */;
+			buildConfigurationList = 274564EE167A05FE00424A9D /* Build configuration list for PBXNativeTarget "MWMApp2" */;
+			buildPhases = (
+				274564DB167A05FE00424A9D /* Sources */,
+				274564E1167A05FE00424A9D /* Frameworks */,
+				274564E6167A05FE00424A9D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MWMApp2;
+			productName = MWMApp;
+			productReference = 274564F1167A05FE00424A9D /* MWMApp2.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2782DA9F1625A7B700C3C67A /* MWMApp1 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2782DABE1625A7B700C3C67A /* Build configuration list for PBXNativeTarget "MWMApp1" */;
 			buildPhases = (
 				2782DA9C1625A7B700C3C67A /* Sources */,
 				2782DA9D1625A7B700C3C67A /* Frameworks */,
@@ -114,9 +221,9 @@
 			);
 			dependencies = (
 			);
-			name = MWMApp;
+			name = MWMApp1;
 			productName = MWMApp;
-			productReference = 2782DAA01625A7B700C3C67A /* MWMApp.app */;
+			productReference = 2782DAA01625A7B700C3C67A /* MWMApp1.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -140,12 +247,34 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2782DA9F1625A7B700C3C67A /* MWMApp */,
+				2782DA9F1625A7B700C3C67A /* MWMApp1 */,
+				274564DA167A05FE00424A9D /* MWMApp2 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		274564E6167A05FE00424A9D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				274564E7167A05FE00424A9D /* InfoPlist.strings in Resources */,
+				274564E8167A05FE00424A9D /* Default.png in Resources */,
+				274564E9167A05FE00424A9D /* Default@2x.png in Resources */,
+				274564EA167A05FE00424A9D /* Default-568h@2x.png in Resources */,
+				274564EB167A05FE00424A9D /* MainViewController.xib in Resources */,
+				274564EC167A05FE00424A9D /* mwmapp1.png in Resources */,
+				274564ED167A05FE00424A9D /* bg_a.bmp in Resources */,
+				274564F7167A13DA00424A9D /* reisgration.mww in Resources */,
+				27C74DBA16822CBD00D1E085 /* metawatch_8pt_5pxl_CAPS.ttf in Resources */,
+				27C74DBC16822CBD00D1E085 /* metawatch_8pt_5pxl_Numerals.ttf in Resources */,
+				27C74DBE16822CBD00D1E085 /* metawatch_8pt_6pxl_Numerals.ttf in Resources */,
+				27C74DC016822CBD00D1E085 /* metawatch_8pt_7pxl_CAPS.ttf in Resources */,
+				27C74DC216822CBD00D1E085 /* metawatch_16pt_11pxl.ttf in Resources */,
+				278F9FDF168250DD0070696A /* mwmapp2.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2782DA9E1625A7B700C3C67A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -154,18 +283,38 @@
 				2782DAB71625A7B700C3C67A /* Default.png in Resources */,
 				2782DAB91625A7B700C3C67A /* Default@2x.png in Resources */,
 				2782DABB1625A7B700C3C67A /* Default-568h@2x.png in Resources */,
+				27ADACB316396E7900D25279 /* MainViewController.xib in Resources */,
+				279BDD66165A56A000DFBFEB /* mwmapp1.png in Resources */,
+				270D713D166D0CF800D87B2F /* bg_a.bmp in Resources */,
+				274564F6167A13DA00424A9D /* reisgration.mww in Resources */,
+				27C74DB916822CBD00D1E085 /* metawatch_8pt_5pxl_CAPS.ttf in Resources */,
+				27C74DBB16822CBD00D1E085 /* metawatch_8pt_5pxl_Numerals.ttf in Resources */,
+				27C74DBD16822CBD00D1E085 /* metawatch_8pt_6pxl_Numerals.ttf in Resources */,
+				27C74DBF16822CBD00D1E085 /* metawatch_8pt_7pxl_CAPS.ttf in Resources */,
+				27C74DC116822CBD00D1E085 /* metawatch_16pt_11pxl.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		274564DB167A05FE00424A9D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				274564DC167A05FE00424A9D /* main.m in Sources */,
+				274564DD167A05FE00424A9D /* AppDelegate.m in Sources */,
+				274564DF167A05FE00424A9D /* MainViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2782DA9C1625A7B700C3C67A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2782DAB11625A7B700C3C67A /* main.m in Sources */,
 				2782DAB51625A7B700C3C67A /* AppDelegate.m in Sources */,
+				27ADACB216396E7900D25279 /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +332,50 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		274564EF167A05FE00424A9D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Siqi Hao (L5FK5QZW53)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Siqi Hao (L5FK5QZW53)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MWMApp/MWMApp-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					mwmapp2,
+				);
+				INFOPLIST_FILE = "MWMApp2-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/MWMAppManager-ekgzzrlegxjarrdhhkydmepelhmr/Build/Products/Debug-iphoneos\"",
+				);
+				PRODUCT_NAME = MWMApp2;
+				PROVISIONING_PROFILE = "4584111F-9CE4-4BE4-AC31-3A24C90D9198";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9DA94FFF-7E08-46A7-97D6-BF02D7D12160";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		274564F0167A05FE00424A9D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Siqi Hao (L5FK5QZW53)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Siqi Hao (L5FK5QZW53)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MWMApp/MWMApp-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = mwmapp2;
+				INFOPLIST_FILE = "MWMApp2-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/MWMAppManager-ekgzzrlegxjarrdhhkydmepelhmr/Build/Products/Debug-iphoneos\"",
+				);
+				PRODUCT_NAME = MWMApp2;
+				PROVISIONING_PROFILE = "4584111F-9CE4-4BE4-AC31-3A24C90D9198";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9DA94FFF-7E08-46A7-97D6-BF02D7D12160";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		2782DABC1625A7B700C3C67A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -235,10 +428,16 @@
 		2782DABF1625A7B700C3C67A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Siqi Hao (L5FK5QZW53)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MWMApp/MWMApp-Prefix.pch";
-				INFOPLIST_FILE = "MWMApp/MWMApp-Info.plist";
+				INFOPLIST_FILE = "MWMApp/MWMApp1-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/MWMAppManager-ekgzzrlegxjarrdhhkydmepelhmr/Build/Products/Debug-iphoneos\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4584111F-9CE4-4BE4-AC31-3A24C90D9198";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -246,10 +445,16 @@
 		2782DAC01625A7B700C3C67A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Siqi Hao (L5FK5QZW53)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MWMApp/MWMApp-Prefix.pch";
-				INFOPLIST_FILE = "MWMApp/MWMApp-Info.plist";
+				INFOPLIST_FILE = "MWMApp/MWMApp1-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/MWMAppManager-ekgzzrlegxjarrdhhkydmepelhmr/Build/Products/Debug-iphoneos\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4584111F-9CE4-4BE4-AC31-3A24C90D9198";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -257,6 +462,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		274564EE167A05FE00424A9D /* Build configuration list for PBXNativeTarget "MWMApp2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				274564EF167A05FE00424A9D /* Debug */,
+				274564F0167A05FE00424A9D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2782DA9A1625A7B700C3C67A /* Build configuration list for PBXProject "MWMApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -266,13 +480,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2782DABE1625A7B700C3C67A /* Build configuration list for PBXNativeTarget "MWMApp" */ = {
+		2782DABE1625A7B700C3C67A /* Build configuration list for PBXNativeTarget "MWMApp1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2782DABF1625A7B700C3C67A /* Debug */,
 				2782DAC01625A7B700C3C67A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
