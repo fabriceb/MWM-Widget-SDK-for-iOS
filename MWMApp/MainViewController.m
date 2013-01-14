@@ -9,8 +9,7 @@
 #import "MainViewController.h"
 
 #import "MWMAppManager.h"
-
-#define WIDGETREALSIZE 48
+#define kUPDATE_INTERVAL_SECONDS 3600 //14400 // 4 FOURS
 
 @interface MainViewController () <MWMAppManagerDelegate, UIDocumentInteractionControllerDelegate>
 
@@ -21,6 +20,7 @@
 @property (nonatomic, strong) NSMutableDictionary *widgetData;
 
 @property (nonatomic) BOOL widgetShouldSendData;
+@property (nonatomic) NSTimeInterval updatedTimestamp;
 
 @property (nonatomic, strong) UIDocumentInteractionController *docController;
 
@@ -37,7 +37,7 @@ static NSString *kWidgetTypeID = @"w_20000001";
 
 @implementation MainViewController
 
-@synthesize statusLabel, previewImg, widgetData, widgetShouldSendData, docController, appnameLabel;
+@synthesize statusLabel, previewImg, widgetData, widgetShouldSendData, docController, appnameLabel, updatedTimestamp;
 
 - (void) mwmAppMgrRestoredSyncID:(NSUInteger)syncID withWidgetType:(NSString*)widgetTypeID andLayoutType:(NSString*)layoutType {
     
@@ -46,7 +46,7 @@ static NSString *kWidgetTypeID = @"w_20000001";
         widgetTypeID = [[widgetData objectForKey:[NSString stringWithFormat:@"%d", syncID]] objectAtIndex:0];
         layoutType = [[widgetData objectForKey:[NSString stringWithFormat:@"%d", syncID]] objectAtIndex:1];
         if (widgetTypeID.length == 0 || layoutType.length == 0) {
-            // unknown widget
+            // unknown widget, you can consider this as a new widget or ask user to remove it from MWM and add again.
             NSLog(@"unknown widget, remove in MWM and add again.");
             return;
         }
@@ -62,32 +62,47 @@ static NSString *kWidgetTypeID = @"w_20000001";
     
     widgetShouldSendData = YES;
     
-    CGSize size  = [self getSizeFromLayoutType:layoutType];
+    [self sendBitmapData];
+}
+
+- (void) sendBitmapData {
+    if (widgetShouldSendData == NO) {
+        return;
+    }
     
-    UIFont *font = [UIFont fontWithName:@"MetaWatch Small caps 8pt" size:8];
+    for (NSString *syncIDString in widgetData.allKeys) {
+        NSString *layoutType = [[widgetData objectForKey:syncIDString] objectAtIndex:1];
+        NSUInteger syncID = [syncIDString integerValue];
+        
+        CGSize size  = [self getSizeFromLayoutType:layoutType];
+        
+        UIFont *font = [UIFont fontWithName:@"MetaWatch Small caps 8pt" size:8];
+        
+        UIGraphicsBeginImageContextWithOptions(size, NO, 1.0);
+        
+        CGContextRef ctx = UIGraphicsGetCurrentContext();
+        
+        CGContextSetFillColorWithColor(ctx, [UIColor whiteColor].CGColor);
+        CGContextFillRect(ctx, CGRectMake(0, 0, size.width, size.height));
+        
+        CGContextSetFillColorWithColor(ctx, [[UIColor blackColor]CGColor]);
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setTimeZone:[NSTimeZone systemTimeZone]];
+        [df setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+        NSString *appName = [NSURL URLWithString:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"]];
+        NSString *errorText = [NSString stringWithFormat:@"%@\nUspdated:\n%@", appName, [df stringFromDate:[NSDate date]]];
+        
+        CGSize idealSize = [errorText sizeWithFont:font constrainedToSize:size lineBreakMode:NSTextAlignmentCenter];
+        
+        [errorText drawInRect:CGRectMake((size.width - idealSize.width)*0.5, (size.height-idealSize.height)*0.5, idealSize.width, idealSize.height) withFont:font lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentCenter];
+        
+        previewImg = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        [[MWMAppManager sharedAppManager] writeIdleWdiget:syncID withDataArray:[self generateBitmapDataArray] fromLine:0 untilLine:48*4];
+    }
     
-    UIGraphicsBeginImageContextWithOptions(size, NO, 1.0);
-    
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    
-    CGContextSetFillColorWithColor(ctx, [UIColor whiteColor].CGColor);
-    CGContextFillRect(ctx, CGRectMake(0, 0, size.width, size.height));
-    
-    CGContextSetFillColorWithColor(ctx, [[UIColor blackColor]CGColor]);
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setTimeZone:[NSTimeZone systemTimeZone]];
-    [df setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-    NSString *appName = [NSURL URLWithString:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"]];
-    NSString *errorText = [NSString stringWithFormat:@"%@\nUspdated:\n%@", appName, [df stringFromDate:[NSDate date]]];
-    
-    CGSize idealSize = [errorText sizeWithFont:font constrainedToSize:size lineBreakMode:NSTextAlignmentCenter];
-    
-    [errorText drawInRect:CGRectMake((size.width - idealSize.width)*0.5, (size.height-idealSize.height)*0.5, idealSize.width, idealSize.height) withFont:font lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentCenter];
-    
-    previewImg = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    [[MWMAppManager sharedAppManager] writeIdleWdiget:syncID withDataArray:[self generateBitmapDataArray] fromLine:0 untilLine:48*4];
+    updatedTimestamp = [NSDate timeIntervalSinceReferenceDate];
 }
 
 - (void) mwmAppMgrRemovedSyncID:(NSUInteger)syncID {
@@ -107,6 +122,9 @@ static NSString *kWidgetTypeID = @"w_20000001";
         // Do regular update, maybe you need to update your widget hourly?
         // You should only update your widget when your widget is valid and restored.
         // Sync ID is not in used atm.
+        if (timeStamp - updatedTimestamp >= kUPDATE_INTERVAL_SECONDS) {
+            [self sendBitmapData];
+        }
         NSLog(@"Widget receive heartbeat");
     }
 }
@@ -182,6 +200,7 @@ static NSString *kWidgetTypeID = @"w_20000001";
     [widgetDataDict setObject:appName forKey:@"widgetAppName"];
     [widgetDataDict setObject:[[NSBundle mainBundle] bundleIdentifier] forKey:@"widgetAppID"];
     [widgetDataDict setObject:kWidgetTypeID forKey:@"widgetID"];
+    [widgetDataDict setObject:[NSNumber numberWithBool:YES] forKey:@"singleton"];
     
     #ifdef mwmapp2
     [widgetDataDict setObject:@[@"a", @"b", @"c", @"d"] forKey:@"supportedLayouts"];
@@ -205,7 +224,7 @@ static NSString *kWidgetTypeID = @"w_20000001";
         
         [docController setUTI:@"public.mww"];
         if ([docController presentOpenInMenuFromRect:self.view.frame inView:self.view animated:YES] == NO) {
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"MetaWatch Manager not installed" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"MetaWatch Manager not installed. Please download from App Store." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         }
     }
 }
@@ -252,10 +271,7 @@ static NSString *kWidgetTypeID = @"w_20000001";
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *path = [documentsDirectory stringByAppendingPathComponent:@"mwmappdata.bin"];
     
-    NSMutableDictionary * rootObject;
-    rootObject = [NSMutableDictionary dictionary];
-    
-    NSLog(@"%@", widgetData);
+    NSMutableDictionary *rootObject = [NSMutableDictionary dictionary];
     
     [rootObject setValue:widgetData forKey:@"widgetdata"];
     [NSKeyedArchiver archiveRootObject: rootObject toFile: path];
@@ -264,23 +280,22 @@ static NSString *kWidgetTypeID = @"w_20000001";
 #pragma mark - Helpers
 - (CGSize) getSizeFromLayoutType:(NSString*)type {
     if ([type isEqualToString:@"a"]) {
-        return CGSizeMake(WIDGETREALSIZE, WIDGETREALSIZE);
+        return CGSizeMake(WIDGETSIZE, WIDGETSIZE);
     } else if ([type isEqualToString:@"b"]) {
-        return CGSizeMake(2*WIDGETREALSIZE, WIDGETREALSIZE);
+        return CGSizeMake(2*WIDGETSIZE, WIDGETSIZE);
     } else if ([type isEqualToString:@"c"]) {
-        return CGSizeMake(WIDGETREALSIZE, 2*WIDGETREALSIZE);
+        return CGSizeMake(WIDGETSIZE, 2*WIDGETSIZE);
     } else if ([type isEqualToString:@"d"]) {
-        return CGSizeMake(2*WIDGETREALSIZE, 2*WIDGETREALSIZE);
+        return CGSizeMake(2*WIDGETSIZE, 2*WIDGETSIZE);
     }
     return CGSizeZero;
 }
 
-
 - (NSArray*) generateBitmapDataArray {
-    CGRect frame1 = CGRectMake(0, 0, WIDGETREALSIZE, WIDGETREALSIZE);
-    CGRect frame2 = CGRectMake(WIDGETREALSIZE, 0, WIDGETREALSIZE, WIDGETREALSIZE);
-    CGRect frame3 = CGRectMake(0, WIDGETREALSIZE, WIDGETREALSIZE, WIDGETREALSIZE);
-    CGRect frame4 = CGRectMake(WIDGETREALSIZE, WIDGETREALSIZE, WIDGETREALSIZE, WIDGETREALSIZE);
+    CGRect frame1 = CGRectMake(0, 0, WIDGETSIZE, WIDGETSIZE);
+    CGRect frame2 = CGRectMake(WIDGETSIZE, 0, WIDGETSIZE, WIDGETSIZE);
+    CGRect frame3 = CGRectMake(0, WIDGETSIZE, WIDGETSIZE, WIDGETSIZE);
+    CGRect frame4 = CGRectMake(WIDGETSIZE, WIDGETSIZE, WIDGETSIZE, WIDGETSIZE);
     
     CGImageRef imgRef = NULL;
     if (previewImg == nil) {

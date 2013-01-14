@@ -51,15 +51,26 @@
 
 @property (nonatomic, weak) id<MWMAppManagerDelegate> delegate;
 
+/*!
+ *  @method handleURL:fromAPP:withAnnotation:
+ *
+ *  @discussion Put this method in application:openURL:sourceApplication:annotation: so url can be passed to MWMAppManager
+ *
+ */
 - (void) handleURL:(NSURL*)url fromAPP:(NSString*)appIdentifier withAnnotation:(id)annotation;
 
 + (MWMAppManager *) sharedAppManager;
 
 // Pair and unpair with Meta Watch
-//- (void) requestMetaWatchIdentityAndConnect:(BOOL)connect;
-//- (void) removeMetaWatchIdentity;
-
 // Connect and disconnect with Meta Watch
+
+/*!
+ *  @method disconnect:
+ *
+ *  @param errorCode Reason of disconnect
+ *  @discussion Disconnect a fully connected watch. Give DISCONNECTEDBYUSER if user disconnects it.
+ *
+ */
 - (void) enableMetaWatchService;
 - (void) disableMetaWatchService;
 
@@ -68,7 +79,7 @@
 - (void) registerNewWidgetType:(NSDictionary*)widgetDataDict;
 - (void) unregisterWidgetType:(NSString*)widgetTypeID;
 
-// Should be invoked everytime connected to watch once registered any widget type
+// Request widget information manually if needed.
 - (void) updateWidgetsInfo;
 
 // Write widget bitmap data
