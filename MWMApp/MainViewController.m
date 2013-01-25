@@ -9,7 +9,7 @@
 #import "MainViewController.h"
 
 #import "MWMAppManager.h"
-#define kUPDATE_INTERVAL_SECONDS 3600 //14400 // 4 HOURS
+#define kUPDATE_INTERVAL_SECONDS 3600 // One Hour
 
 @interface MainViewController () <MWMAppManagerDelegate>
 
