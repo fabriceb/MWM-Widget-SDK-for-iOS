@@ -22,8 +22,6 @@
 		274564EB167A05FE00424A9D /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27ADACB116396E7900D25279 /* MainViewController.xib */; };
 		274564EC167A05FE00424A9D /* mwmapp1.png in Resources */ = {isa = PBXBuildFile; fileRef = 279BDD65165A56A000DFBFEB /* mwmapp1.png */; };
 		274564ED167A05FE00424A9D /* bg_a.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 270D713C166D0CF800D87B2F /* bg_a.bmp */; };
-		274564F6167A13DA00424A9D /* reisgration.mww in Resources */ = {isa = PBXBuildFile; fileRef = 274564F5167A13DA00424A9D /* reisgration.mww */; };
-		274564F7167A13DA00424A9D /* reisgration.mww in Resources */ = {isa = PBXBuildFile; fileRef = 274564F5167A13DA00424A9D /* reisgration.mww */; };
 		2782DAA51625A7B700C3C67A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2782DAA41625A7B700C3C67A /* UIKit.framework */; };
 		2782DAA71625A7B700C3C67A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2782DAA61625A7B700C3C67A /* Foundation.framework */; };
 		2782DAA91625A7B700C3C67A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2782DAA81625A7B700C3C67A /* CoreGraphics.framework */; };
@@ -54,9 +52,9 @@
 
 /* Begin PBXFileReference section */
 		270D713C166D0CF800D87B2F /* bg_a.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = bg_a.bmp; sourceTree = "<group>"; };
+		27357AE016B280E000EE63A9 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; name = README; path = ../README; sourceTree = "<group>"; };
 		274564F1167A05FE00424A9D /* MWMApp2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MWMApp2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		274564F3167A05FE00424A9D /* MWMApp2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MWMApp2-Info.plist"; sourceTree = SOURCE_ROOT; };
-		274564F5167A13DA00424A9D /* reisgration.mww */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = reisgration.mww; sourceTree = "<group>"; };
 		2782DAA01625A7B700C3C67A /* MWMApp1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MWMApp1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2782DAA41625A7B700C3C67A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2782DAA61625A7B700C3C67A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -155,7 +153,6 @@
 				279BDD65165A56A000DFBFEB /* mwmapp1.png */,
 				278F9FDE168250DD0070696A /* mwmapp2.png */,
 				270D713C166D0CF800D87B2F /* bg_a.bmp */,
-				274564F5167A13DA00424A9D /* reisgration.mww */,
 				2782DAAB1625A7B700C3C67A /* Supporting Files */,
 				27C74DC416822CC000D1E085 /* MetaFonts */,
 			);
@@ -167,6 +164,7 @@
 			children = (
 				2782DAAC1625A7B700C3C67A /* MWMApp1-Info.plist */,
 				274564F3167A05FE00424A9D /* MWMApp2-Info.plist */,
+				27357AE016B280E000EE63A9 /* README */,
 				2782DAAD1625A7B700C3C67A /* InfoPlist.strings */,
 				2782DAB01625A7B700C3C67A /* main.m */,
 				2782DAB21625A7B700C3C67A /* MWMApp-Prefix.pch */,
@@ -265,7 +263,6 @@
 				274564EB167A05FE00424A9D /* MainViewController.xib in Resources */,
 				274564EC167A05FE00424A9D /* mwmapp1.png in Resources */,
 				274564ED167A05FE00424A9D /* bg_a.bmp in Resources */,
-				274564F7167A13DA00424A9D /* reisgration.mww in Resources */,
 				27C74DBA16822CBD00D1E085 /* metawatch_8pt_5pxl_CAPS.ttf in Resources */,
 				27C74DBC16822CBD00D1E085 /* metawatch_8pt_5pxl_Numerals.ttf in Resources */,
 				27C74DBE16822CBD00D1E085 /* metawatch_8pt_6pxl_Numerals.ttf in Resources */,
@@ -286,7 +283,6 @@
 				27ADACB316396E7900D25279 /* MainViewController.xib in Resources */,
 				279BDD66165A56A000DFBFEB /* mwmapp1.png in Resources */,
 				270D713D166D0CF800D87B2F /* bg_a.bmp in Resources */,
-				274564F6167A13DA00424A9D /* reisgration.mww in Resources */,
 				27C74DB916822CBD00D1E085 /* metawatch_8pt_5pxl_CAPS.ttf in Resources */,
 				27C74DBB16822CBD00D1E085 /* metawatch_8pt_5pxl_Numerals.ttf in Resources */,
 				27C74DBD16822CBD00D1E085 /* metawatch_8pt_6pxl_Numerals.ttf in Resources */,
@@ -437,7 +433,7 @@
 					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/MWMAppManager-ekgzzrlegxjarrdhhkydmepelhmr/Build/Products/Debug-iphoneos\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4584111F-9CE4-4BE4-AC31-3A24C90D9198";
+				PROVISIONING_PROFILE = "D1AAB472-68E7-4377-B513-AED62E2BBA2D";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -454,7 +450,7 @@
 					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/MWMAppManager-ekgzzrlegxjarrdhhkydmepelhmr/Build/Products/Debug-iphoneos\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4584111F-9CE4-4BE4-AC31-3A24C90D9198";
+				PROVISIONING_PROFILE = "D1AAB472-68E7-4377-B513-AED62E2BBA2D";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

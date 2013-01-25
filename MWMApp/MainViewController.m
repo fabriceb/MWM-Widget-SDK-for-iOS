@@ -43,15 +43,17 @@ static NSString *kWidgetTypeID = @"w_20000001";
     
     if (widgetTypeID.length == 0 || layoutType.length == 0) {
         // an existing widget restored
+        NSLog(@"an existing widget restored:%d", syncID);
         widgetTypeID = [[widgetData objectForKey:[NSString stringWithFormat:@"%d", syncID]] objectAtIndex:0];
         layoutType = [[widgetData objectForKey:[NSString stringWithFormat:@"%d", syncID]] objectAtIndex:1];
         if (widgetTypeID.length == 0 || layoutType.length == 0) {
-            // unknown widget, you can consider this as a new widget or ask user to remove it from MWM and add again.
-            NSLog(@"unknown widget, remove in MWM and add again.");
+            // unknown widget, ask user to remove it from MWM and add again.
+            NSLog(@"nothing here");
             return;
         }
     } else if ([kWidgetTypeID isEqualToString:widgetTypeID]) {
         // a new widget is created, save new widget info
+        NSLog(@"a new widget is created, save new widget info");
         [widgetData setObject:@[widgetTypeID, layoutType] forKey:[NSString stringWithFormat:@"%d", syncID]];
         [self saveDataToDisk];
     } else {
@@ -62,47 +64,59 @@ static NSString *kWidgetTypeID = @"w_20000001";
     
     widgetShouldSendData = YES;
     
-    [self sendBitmapData];
+    [self sendBitmapDataWithSyncID:[NSString stringWithFormat:@"%d", syncID]];
 }
 
-- (void) sendBitmapData {
+- (void) sendBitmapDataWithSyncID:(NSString*)syncID {
     if (widgetShouldSendData == NO) {
         return;
     }
     
-    for (NSString *syncIDString in widgetData.allKeys) {
-        NSString *layoutType = [[widgetData objectForKey:syncIDString] objectAtIndex:1];
-        NSUInteger syncID = [syncIDString integerValue];
-        
-        CGSize size  = [self getSizeFromLayoutType:layoutType];
-        
-        UIFont *font = [UIFont fontWithName:@"MetaWatch Small caps 8pt" size:8];
-        
-        UIGraphicsBeginImageContextWithOptions(size, NO, 1.0);
-        
-        CGContextRef ctx = UIGraphicsGetCurrentContext();
-        
-        CGContextSetFillColorWithColor(ctx, [UIColor whiteColor].CGColor);
-        CGContextFillRect(ctx, CGRectMake(0, 0, size.width, size.height));
-        
-        CGContextSetFillColorWithColor(ctx, [[UIColor blackColor]CGColor]);
-        NSDateFormatter *df = [[NSDateFormatter alloc] init];
-        [df setTimeZone:[NSTimeZone systemTimeZone]];
-        [df setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-        NSString *appName = [NSURL URLWithString:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"]];
-        NSString *errorText = [NSString stringWithFormat:@"%@\nUspdated:\n%@", appName, [df stringFromDate:[NSDate date]]];
-        
-        CGSize idealSize = [errorText sizeWithFont:font constrainedToSize:size lineBreakMode:NSTextAlignmentCenter];
-        
-        [errorText drawInRect:CGRectMake((size.width - idealSize.width)*0.5, (size.height-idealSize.height)*0.5, idealSize.width, idealSize.height) withFont:font lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentCenter];
-        
-        previewImg = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
-        [[MWMAppManager sharedAppManager] writeIdleWdiget:syncID withDataArray:[self generateBitmapDataArray] fromLine:0 untilLine:48*4];
+    if (syncID.length == 0) {
+        for (NSString *syncIDString in widgetData.allKeys) {
+            [self updateWidgetInstance:syncIDString];
+        }
+    } else {
+        [self updateWidgetInstance:syncID];
     }
     
     updatedTimestamp = [NSDate timeIntervalSinceReferenceDate];
+}
+
+- (void) updateWidgetInstance:(NSString*)syncIDString {
+    if ([[widgetData allKeys] containsObject:syncIDString] == NO) {
+        return;
+    }
+    
+    NSString *layoutType = [[widgetData objectForKey:syncIDString] objectAtIndex:1];
+    NSUInteger syncID = [syncIDString integerValue];
+    
+    CGSize size  = [self getSizeFromLayoutType:layoutType];
+    
+    UIFont *font = [UIFont fontWithName:@"MetaWatch Small caps 8pt" size:8];
+    
+    UIGraphicsBeginImageContextWithOptions(size, NO, 1.0);
+    
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(ctx, [UIColor whiteColor].CGColor);
+    CGContextFillRect(ctx, CGRectMake(0, 0, size.width, size.height));
+    
+    CGContextSetFillColorWithColor(ctx, [[UIColor blackColor]CGColor]);
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setTimeZone:[NSTimeZone systemTimeZone]];
+    [df setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    NSString *appName = [NSURL URLWithString:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"]];
+    NSString *errorText = [NSString stringWithFormat:@"%@\nUspdated:\n%@", appName, [df stringFromDate:[NSDate date]]];
+    
+    CGSize idealSize = [errorText sizeWithFont:font constrainedToSize:size lineBreakMode:NSTextAlignmentCenter];
+    
+    [errorText drawInRect:CGRectMake((size.width - idealSize.width)*0.5, (size.height-idealSize.height)*0.5, idealSize.width, idealSize.height) withFont:font lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentCenter];
+    
+    previewImg = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    [[MWMAppManager sharedAppManager] writeIdleWdiget:syncID withDataArray:[self generateBitmapDataArray] fromLine:0 untilLine:48*4];
 }
 
 - (void) mwmAppMgrRemovedSyncID:(NSUInteger)syncID {
@@ -123,7 +137,7 @@ static NSString *kWidgetTypeID = @"w_20000001";
         // You should only update your widget when your widget is valid and restored.
         // Sync ID is not in used atm.
         if (timeStamp - updatedTimestamp >= kUPDATE_INTERVAL_SECONDS) {
-            [self sendBitmapData];
+            [self sendBitmapDataWithSyncID:nil];
         }
         NSLog(@"Widget receive heartbeat");
     }
@@ -150,6 +164,7 @@ static NSString *kWidgetTypeID = @"w_20000001";
 
 - (void) mwmAppMgrDidDisableMetaWatchService {
     statusLabel.text = @"MetaWatch Service Disabled";
+    widgetShouldSendData = NO;
 }
 
 - (void) mwmAppMgrDidEnableMetaWatchService {
@@ -163,6 +178,10 @@ static NSString *kWidgetTypeID = @"w_20000001";
         [[[UIAlertView alloc] initWithTitle:@"MWMApp" message:@"Widget already registered." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     } else if (error.code == MWMAPP_INVALID_WIDGET_DATA) {
         [[[UIAlertView alloc] initWithTitle:@"MWMApp" message:@"Invalid widget data format" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    } else if (error.code == MWMAPP_REGISTER_MWM_NOT_INSTALLED) {
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"MetaWatch Manager not installed. Please download from App Store." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    } else {
+        [[[UIAlertView alloc] initWithTitle:@"MWMApp" message:@"Unknown error. Report a bug if you see this." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }
 }
 
@@ -175,8 +194,9 @@ static NSString *kWidgetTypeID = @"w_20000001";
     } else if (error.code == MWMAPP_UNREGISTER_FAILED_INUSE) {
         // MWMAPP_UNREGISTER_FAILED
         [[[UIAlertView alloc] initWithTitle:@"MWMApp" message:[NSString stringWithFormat:@"%@ is in use. Please remove it first", widgetTypeID] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    } else {
+        [[[UIAlertView alloc] initWithTitle:@"MWMApp" message:@"Unknown error. Report a bug if you see this." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }
-    
 }
 
 - (NSArray*) mwmAppMgrRequestedWidgetTypeIDs {
@@ -194,39 +214,45 @@ static NSString *kWidgetTypeID = @"w_20000001";
 
 - (IBAction) registerExampleWidget:(id)sender {
     NSMutableDictionary *widgetDataDict = [NSMutableDictionary dictionary];
+    
+    // Indicate this is a register widget action
     [widgetDataDict setObject:@"registerWidgetType" forKey:@"action"];
     
+    // Sandard for all widgets
     NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
     [widgetDataDict setObject:appName forKey:@"widgetAppName"];
     [widgetDataDict setObject:[[NSBundle mainBundle] bundleIdentifier] forKey:@"widgetAppID"];
+    
+    // Put your widget type ID here.
     [widgetDataDict setObject:kWidgetTypeID forKey:@"widgetID"];
-    [widgetDataDict setObject:[NSNumber numberWithBool:YES] forKey:@"singleton"];
     
     #ifdef mwmapp2
+    // a: one square widget
+    // b: horizental widget
+    // c: vertical widget
+    // d: full screen widget
     [widgetDataDict setObject:@[@"a", @"b", @"c", @"d"] forKey:@"supportedLayouts"];
+    
+    // widget name
     [widgetDataDict setObject:@"ChromeWidget" forKey:@"widgetName"];
+    
+    // Has to be 76*76 PNG!
     [widgetDataDict setObject:UIImagePNGRepresentation([UIImage imageNamed:@"mwmapp2"]) forKey:@"widgetIcon"];
+    
+    // If you only supports one instance per widget type, put YES here. Singleton widget is more stable and easy to implement.
+    [widgetDataDict setObject:[NSNumber numberWithBool:NO] forKey:@"singleton"];
+    
     #else
     [widgetDataDict setObject:@[@"a", @"b"] forKey:@"supportedLayouts"];
     [widgetDataDict setObject:@"HomeWidget" forKey:@"widgetName"];
     [widgetDataDict setObject:UIImagePNGRepresentation([UIImage imageNamed:@"mwmapp1"]) forKey:@"widgetIcon"];
+    [widgetDataDict setObject:[NSNumber numberWithBool:YES] forKey:@"singleton"];
     #endif
     
     //NSLog(@"%@", [widgetDataDict description]);
     
-    NSArray* cachePathArray = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    NSString* cachePath = [cachePathArray lastObject];
-    
-    NSString *tempFilePath = [NSString stringWithFormat:@"%@/registration.mww", cachePath];
-    
-    if ([widgetDataDict writeToFile:tempFilePath atomically:YES]) {
-        docController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:tempFilePath]];
-        
-        [docController setUTI:@"public.mww"];
-        if ([docController presentOpenInMenuFromRect:self.view.frame inView:self.view animated:YES] == NO) {
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"MetaWatch Manager not installed. Please download from App Store." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-        }
-    }
+    [[MWMAppManager sharedAppManager] registerNewWidgetType:widgetDataDict withView:self.view];
+    return;
 }
 
 - (IBAction) unregisterExampleWidget {
