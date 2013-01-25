@@ -16,7 +16,7 @@ Install and use our SDK:
 5 Install fonts provided with the sample project under MetaFonts.
 
 About the sample project
-Sample project present one possible implementation for MWM widget. Depending on the logic of your widget, the actual implementation can be quite different. Sample project contains two targets, MWMApp1 is a singleton widget, meaning only one instance of the widget type can be created at the same time.
+The sample project presents one possible implementation of MWM widget. Depending on the logic of your widget, the actual implementation can be quite different. Sample project contains two targets, MWMApp1 is a singleton widget, meaning only one instance of the widget type can be created at the same time.
 
 To Connect MetaWatch using your App.
 1 Implement MWMAppManagerDelegate, make sure you implemented all required delegate methods.
@@ -26,3 +26,12 @@ To Connect MetaWatch using your App.
 
 To register a widget type to MetaWatch Manager, see registerExampleWidget in MainViewController.m
 
+You can use the widget type IDs supplied with the project for development. To get your own widget type ID, please send email to siqi@metawatch.org with following information:
+App Name:
+App bundle ID:
+Email:
+Web:
+Contact person:
+Widget Description:
+
+Information is collected only for record purposes.
