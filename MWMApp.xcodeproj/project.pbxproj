@@ -343,7 +343,7 @@
 				INFOPLIST_FILE = "MWMApp2-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/MWMAppManager-ekgzzrlegxjarrdhhkydmepelhmr/Build/Products/Debug-iphoneos\"",
+					"$(SRCROOT)/**",
 				);
 				PRODUCT_NAME = MWMApp2;
 				PROVISIONING_PROFILE = "4584111F-9CE4-4BE4-AC31-3A24C90D9198";
@@ -363,7 +363,7 @@
 				INFOPLIST_FILE = "MWMApp2-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/MWMAppManager-ekgzzrlegxjarrdhhkydmepelhmr/Build/Products/Debug-iphoneos\"",
+					"$(SRCROOT)/**",
 				);
 				PRODUCT_NAME = MWMApp2;
 				PROVISIONING_PROFILE = "4584111F-9CE4-4BE4-AC31-3A24C90D9198";
@@ -430,7 +430,7 @@
 				INFOPLIST_FILE = "MWMApp/MWMApp1-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/MWMAppManager-ekgzzrlegxjarrdhhkydmepelhmr/Build/Products/Debug-iphoneos\"",
+					"$(SRCROOT)/**",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "D1AAB472-68E7-4377-B513-AED62E2BBA2D";
@@ -447,7 +447,7 @@
 				INFOPLIST_FILE = "MWMApp/MWMApp1-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/MWMAppManager-ekgzzrlegxjarrdhhkydmepelhmr/Build/Products/Debug-iphoneos\"",
+					"$(SRCROOT)/**",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "D1AAB472-68E7-4377-B513-AED62E2BBA2D";
