@@ -16,6 +16,7 @@ Install and use our SDK:
 5 Install fonts provided with the sample project under MetaFonts.
 
 About the sample project
+Sample project present one possible implementation for MWM widget. Depending on the logic of your widget, the actual implementation can be quite different. Sample project contains two targets, MWMApp1 is a singleton widget, meaning only one instance of the widget type can be created at the same time.
 
 To Connect MetaWatch using your App.
 1 Implement MWMAppManagerDelegate, make sure you implemented all required delegate methods.
