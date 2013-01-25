@@ -74,7 +74,7 @@
 		27ADACAF16396E7900D25279 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		27ADACB016396E7900D25279 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		27ADACB116396E7900D25279 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		27B8224F1685E2B7001F7635 /* libMWMAppManager.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMWMAppManager.a; sourceTree = "<group>"; };
+		27B8224F1685E2B7001F7635 /* libMWMAppManager.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMWMAppManager.a; path = MWMApp/libMWMAppManager.a; sourceTree = SOURCE_ROOT; };
 		27C74DB416822CBC00D1E085 /* metawatch_8pt_5pxl_CAPS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = metawatch_8pt_5pxl_CAPS.ttf; sourceTree = "<group>"; };
 		27C74DB516822CBC00D1E085 /* metawatch_8pt_5pxl_Numerals.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = metawatch_8pt_5pxl_Numerals.ttf; sourceTree = "<group>"; };
 		27C74DB616822CBC00D1E085 /* metawatch_8pt_6pxl_Numerals.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = metawatch_8pt_6pxl_Numerals.ttf; sourceTree = "<group>"; };
