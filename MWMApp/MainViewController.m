@@ -9,23 +9,22 @@
 #import "MainViewController.h"
 
 #import "MWMAppManager.h"
-#define kUPDATE_INTERVAL_SECONDS 3600 //14400 // 4 FOURS
+#define kUPDATE_INTERVAL_SECONDS 3600 //14400 // 4 HOURS
 
-@interface MainViewController () <MWMAppManagerDelegate, UIDocumentInteractionControllerDelegate>
+@interface MainViewController () <MWMAppManagerDelegate>
 
 @property (nonatomic, strong) IBOutlet UILabel *statusLabel;
 @property (nonatomic, strong) IBOutlet UILabel *appnameLabel;
+
 @property (nonatomic, strong) UIImage *previewImg;
-
 @property (nonatomic, strong) NSMutableDictionary *widgetData;
-
 @property (nonatomic) BOOL widgetShouldSendData;
 @property (nonatomic) NSTimeInterval updatedTimestamp;
 
-@property (nonatomic, strong) UIDocumentInteractionController *docController;
-
 - (IBAction) enableMMBtnPressed:(id)sender;
 - (IBAction) disableMMBtnPressed:(id)sender;
+- (IBAction) registerExampleWidget:(id)sender;
+- (IBAction) unregisterExampleWidget;
 
 @end
 
@@ -37,7 +36,7 @@ static NSString *kWidgetTypeID = @"w_20000001";
 
 @implementation MainViewController
 
-@synthesize statusLabel, previewImg, widgetData, widgetShouldSendData, docController, appnameLabel, updatedTimestamp;
+@synthesize statusLabel, previewImg, widgetData, widgetShouldSendData, appnameLabel, updatedTimestamp;
 
 - (void) mwmAppMgrRestoredSyncID:(NSUInteger)syncID withWidgetType:(NSString*)widgetTypeID andLayoutType:(NSString*)layoutType {
     
@@ -118,6 +117,8 @@ static NSString *kWidgetTypeID = @"w_20000001";
     
     [[MWMAppManager sharedAppManager] writeIdleWdiget:syncID withDataArray:[self generateBitmapDataArray] fromLine:0 untilLine:48*4];
 }
+
+#pragma mark - MWMAppManagerDelegate
 
 - (void) mwmAppMgrRemovedSyncID:(NSUInteger)syncID {
     [widgetData removeObjectForKey:[NSString stringWithFormat:@"%d", syncID]];
@@ -202,6 +203,8 @@ static NSString *kWidgetTypeID = @"w_20000001";
 - (NSArray*) mwmAppMgrRequestedWidgetTypeIDs {
     return @[kWidgetTypeID];
 }
+
+#pragma mark - IBActions
 
 - (IBAction) enableMMBtnPressed:(id)sender {
     [[MWMAppManager sharedAppManager] enableMetaWatchService];
