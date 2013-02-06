@@ -11,6 +11,7 @@
 
 #define WIDGETSIZE 48
 
+// Error code for BLE status
 #define DISCONNECTEDUNKNOWN 201
 #define DISCONNECTEDBYUSER 202
 #define DISCONNECTEDBY8882 203
@@ -18,11 +19,13 @@
 #define DISCONNECTEDBYBLENOTIF 205
 #define DISCONNECTEDBY8880 206
 
+// Error code for MWMApp
 #define MWMAPP_INVALID_WIDGET_DATA 401
 #define MWMAPP_REGISTER_DUPLICATED 402
 #define MWMAPP_UNREGISTER_FAILED_NOT_EXISTED 403
 #define MWMAPP_UNREGISTER_FAILED_INUSE 404
 #define MWMAPP_REGISTER_MWM_NOT_INSTALLED 405
+#define MWMAPP_UPDATE_NOT_EXISTED 406
 
 @protocol MWMAppManagerDelegate <NSObject>
 
@@ -71,6 +74,8 @@
  *
  */
 - (void) mwmAppMgrRegisteredWidgetType:(NSString*)widgetTypeID withError:(NSError*)error;
+
+- (void) mwmAppMgrUpdatedWidgetType:(NSString*)widgetTypeID withError:(NSError*)error;
 
 /*!
  *  @method mwmAppMgrUnregisteredWidgetType:withError:

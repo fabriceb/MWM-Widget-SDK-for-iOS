@@ -24,6 +24,7 @@
 - (IBAction) enableMMBtnPressed:(id)sender;
 - (IBAction) disableMMBtnPressed:(id)sender;
 - (IBAction) registerExampleWidget:(id)sender;
+- (IBAction) updateExampleWidget:(id)sender;
 - (IBAction) unregisterExampleWidget;
 
 @end
@@ -154,7 +155,6 @@ static NSString *kWidgetTypeID = @"w_20000001";
             [widgetData removeObjectsForKeys:keysToRemove];
         }
         
-        //NSLog(@"%@", [widgetData description]);
         [self saveDataToDisk];
         
         for (NSString *syncID in widgetData) {
@@ -183,6 +183,14 @@ static NSString *kWidgetTypeID = @"w_20000001";
         [[[UIAlertView alloc] initWithTitle:@"Error" message:@"MetaWatch Manager not installed. Please download from App Store." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     } else {
         [[[UIAlertView alloc] initWithTitle:@"MWMApp" message:@"Unknown error. Report a bug if you see this." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    }
+}
+
+- (void) mwmAppMgrUpdatedWidgetType:(NSString *)widgetTypeID withError:(NSError *)error {
+    if (error == nil) {
+        [[[UIAlertView alloc] initWithTitle:@"MWMApp" message:[NSString stringWithFormat:@"%@ updated", widgetTypeID] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    } else if (error.code == MWMAPP_UPDATE_NOT_EXISTED) {
+        [[[UIAlertView alloc] initWithTitle:@"MWMApp" message:[NSString stringWithFormat:@"%@ does not exist. Please register.", widgetTypeID] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }
 }
 
@@ -256,6 +264,46 @@ static NSString *kWidgetTypeID = @"w_20000001";
     
     [[MWMAppManager sharedAppManager] registerNewWidgetType:widgetDataDict withView:self.view];
     return;
+}
+
+- (IBAction) updateExampleWidget:(id)sender {
+    NSMutableDictionary *widgetDataDict = [NSMutableDictionary dictionary];
+    
+    // Indicate this is a register widget action
+    [widgetDataDict setObject:@"updateWidgetType" forKey:@"action"];
+    
+    // Sandard for all widgets
+    NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+    [widgetDataDict setObject:appName forKey:@"widgetAppName"];
+    [widgetDataDict setObject:[[NSBundle mainBundle] bundleIdentifier] forKey:@"widgetAppID"];
+    
+    // Put your widget type ID here.
+    [widgetDataDict setObject:kWidgetTypeID forKey:@"widgetID"];
+    
+    #ifdef mwmapp2
+    // a: one square widget
+    // b: horizental widget
+    // c: vertical widget
+    // d: full screen widget
+    [widgetDataDict setObject:@[@"a"] forKey:@"supportedLayouts"];
+    
+    // widget name
+    [widgetDataDict setObject:@"ChromeWidget" forKey:@"widgetName"];
+    
+    // Has to be 76*76 PNG!
+    [widgetDataDict setObject:UIImagePNGRepresentation([UIImage imageNamed:@"mwmapp2"]) forKey:@"widgetIcon"];
+    
+    // If you only supports one instance per widget type, put YES here. Singleton widget is more stable and easy to implement.
+    [widgetDataDict setObject:[NSNumber numberWithBool:NO] forKey:@"singleton"];
+    
+    #else
+    [widgetDataDict setObject:@[@"a"] forKey:@"supportedLayouts"];
+    [widgetDataDict setObject:@"HomeWidget" forKey:@"widgetName"];
+    [widgetDataDict setObject:UIImagePNGRepresentation([UIImage imageNamed:@"mwmapp1"]) forKey:@"widgetIcon"];
+    [widgetDataDict setObject:[NSNumber numberWithBool:YES] forKey:@"singleton"];
+    #endif
+    
+    [[MWMAppManager sharedAppManager] registerNewWidgetType:widgetDataDict withView:self.view];
 }
 
 - (IBAction) unregisterExampleWidget {
