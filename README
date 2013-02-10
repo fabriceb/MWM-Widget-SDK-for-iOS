@@ -1,9 +1,9 @@
 MetaWatch Widget SDK
 
-MetaWatch SDK is a static library with a wrapper of the iOS CoreBluetooth framework and MetaWatch Remote Message Protocol. The purpose of the library is to enable fast and easy implementation for thrid-party widget develoeprs to develop a widget for MetaWatch.
+MetaWatch SDK is a static library with a wrapper of the iOS CoreBluetooth framework and MetaWatch Remote Message Protocol. The purpose of the library is to enable fast and easy implementation for third-party widget developers to develop a widget for MetaWatch.
 
 About MetaWatch widget
-MetaWatch can support totally 16 widgets. The widget has four sizes: one-suqare, two-horizental-square, two-vertical-square and four-square. Widget is normally defined by their functionalities, not sizes, which widgets of different sizes with similar functionalities are considered as one widget type.
+MetaWatch can support up to 16 widgets. The widgets have four sizes: one-suqare, two-horizontal-square, two-vertical-square and four-square. Widgets are normally defined by their functionalities, not sizes: widgets of different sizes with similar functionalities are considered to be one widget type.
 
 Install and use our SDK:
 1 To use our SDK, a widget type ID is required. Widget tyoe ID is the identifier of your widget. Your app can have multiple widget types if needed. For example, a fitness app can have both running widget type and cycling widget tyoe. Each widget can support multiple layouts.
